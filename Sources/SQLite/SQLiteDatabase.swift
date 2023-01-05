@@ -359,7 +359,8 @@ extension SQLiteDatabase: Equatable {
 
 public extension SQLiteDatabase {
     var supportsJSON: Bool {
-        isCompileOptionEnabled("ENABLE_JSON1")
+        true
+//        isCompileOptionEnabled("ENABLE_JSON1") jmj
     }
 
     func isCompileOptionEnabled(_ name: String) -> Bool {

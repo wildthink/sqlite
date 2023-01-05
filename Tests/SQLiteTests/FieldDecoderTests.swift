@@ -34,6 +34,15 @@ final class FieldDecoderTests: XCTestCase {
 
 }
 
+typealias NodeRepresentable = Any
+
+func fieldsAndValues(_ value: Any) -> [(String, NodeRepresentable)] {
+    let m = Mirror(reflecting: value)
+    return m.children.map { child in
+        (child.label!, child.value)
+    }
+}
+
 struct User: Codable {
     var name: String
     var createdAt: Date
