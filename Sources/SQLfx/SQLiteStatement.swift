@@ -69,6 +69,8 @@ extension SQLiteStatement {
             result = sqlite3_bind_null(self, index)
         case let .text(text):
             result = sqlite3_bind_text(self, index, text, -1, SQLITE_TRANSIENT)
+        case let .json(text):
+            result = sqlite3_bind_text(self, index, text, -1, SQLITE_TRANSIENT)
         }
 
         if SQLITE_OK != result {

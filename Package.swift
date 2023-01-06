@@ -2,14 +2,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "SQLite",
+    name: "SQLfx",
     platforms: [
         .macOS(.v11), .iOS(.v14), .tvOS(.v14), .watchOS(.v7),
     ],
     products: [
         .library(
-            name: "SQLite",
-            targets: ["SQLite"]
+            name: "SQLfx",
+            targets: ["SQLfx"]
         ),
     ],
     dependencies: [
@@ -28,7 +28,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SQLite",
+            name: "SQLfx",
             dependencies: [
                 .product(
                     name: "PreciseISO8601DateFormatter",
@@ -38,11 +38,11 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "SQLiteTests",
+            name: "SQLfxTests",
             dependencies: [
                 .product(name: "CombineExtensions", package: "combine-extensions"),
                 .product(name: "CombineTestExtensions", package: "combine-extensions"),
-                "SQLite",
+                "SQLfx",
             ]
         ),
     ]

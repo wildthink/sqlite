@@ -10,6 +10,7 @@ public enum SQLiteValue: Hashable {
     case integer(Int64)
     case null
     case text(String)
+    case json(String)
 }
 
 public extension SQLiteValue {
