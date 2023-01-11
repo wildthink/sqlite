@@ -25,8 +25,12 @@ public extension SQLiteValue {
     }
 
     var doubleValue: Double? {
-        guard case let .double(double) = self else { return nil }
-        return double
+        switch self {
+        case let .double(v): return v
+        case let .integer(v): return Double(v)
+        default:
+            return nil
+        }
     }
 
     var intValue: Int? {
