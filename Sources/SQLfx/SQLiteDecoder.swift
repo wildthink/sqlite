@@ -16,6 +16,7 @@ public final class SQLiteDecoder {
         _database = database
     }
 
+    @_disfavoredOverload
     public func decode<T: Decodable>(
         _: T.Type,
         using sql: SQL,
@@ -29,15 +30,21 @@ public final class SQLiteDecoder {
     }
 
     public func decode<T: Decodable>(
-        _: [T].Type,
+        _: [T].Type = [T].self,
         using sql: SQL,
-        arguments: SQLiteArguments = [:]
+        arguments: SQLiteArguments = [:],
+        trace: ((SQLiteRow, Error?) -> Void)? = nil
     ) throws -> [T] {
         let results: [SQLiteRow] = try _database.read(sql, arguments: arguments)
         let decoder = _SQLiteDecoder()
-        return try results.map { (row: SQLiteRow) in
+        return results.compactMap { (row: SQLiteRow) in
             decoder.row = row
-            return try T(from: decoder)
+            do {
+                return try T(from: decoder)
+            } catch {
+                trace?(row, error as? SQLiteDecoder.Error)
+                return Optional<T>.none
+            }
         }
     }
 }
