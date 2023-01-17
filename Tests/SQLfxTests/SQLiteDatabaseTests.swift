@@ -1,6 +1,6 @@
 import Combine
 import CombineTestExtensions
-@testable import SQLite
+@testable import SQLfx
 import SQLite3
 import XCTest
 

@@ -1,5 +1,5 @@
 import Foundation
-import SQLite
+import SQLfx
 
 struct Transformable: Equatable, SQLiteTransformable {
     static var tableName: String { "transformables" }

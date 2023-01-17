@@ -1,5 +1,5 @@
 import Foundation
-import SQLite
+import SQLfx
 
 struct PetOwner: Equatable {
     var id: String

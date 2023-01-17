@@ -1,5 +1,5 @@
 import CombineTestExtensions
-@testable import SQLite
+@testable import SQLfx
 import XCTest
 
 final class SQLiteCrossProcessMonitorTests: XCTestCase {

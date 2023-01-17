@@ -1,20 +1,20 @@
 import PreciseISO8601DateFormatter
-@testable import SQLite
+@testable import SQLfx
 import XCTest
 
 final class PreciseDateFormatterTests: XCTestCase {
     func testCurrentDateSerializesAndDeserializes() throws {
         let date = Date()
-        let dateAsString = SQLite.PreciseDateFormatter.string(from: date)
-        let dateFromString = SQLite.PreciseDateFormatter.date(from: dateAsString)
+        let dateAsString = SQLfx.PreciseDateFormatter.string(from: date)
+        let dateFromString = SQLfx.PreciseDateFormatter.date(from: dateAsString)
         XCTAssertNotNil(dateFromString)
         XCTAssertEqual(date, dateFromString)
     }
 
     func testUnixTimestampSerializesAndDeserializes() throws {
         let date = Date(timeIntervalSince1970: 1_534_500_993.44331)
-        let dateAsString = SQLite.PreciseDateFormatter.string(from: date)
-        let dateFromString = SQLite.PreciseDateFormatter.date(from: dateAsString)
+        let dateAsString = SQLfx.PreciseDateFormatter.string(from: date)
+        let dateFromString = SQLfx.PreciseDateFormatter.date(from: dateAsString)
         XCTAssertNotNil(dateFromString)
         XCTAssertEqual(date, dateFromString)
     }
@@ -23,8 +23,8 @@ final class PreciseDateFormatterTests: XCTestCase {
         let formatter = PreciseISO8601DateFormatter()
         guard let date = formatter.date(from: "2018-08-17T10:22:09.995599Z")
         else { return XCTFail() }
-        let dateAsString = SQLite.PreciseDateFormatter.string(from: date)
-        let dateFromString = SQLite.PreciseDateFormatter.date(from: dateAsString)
+        let dateAsString = SQLfx.PreciseDateFormatter.string(from: date)
+        let dateFromString = SQLfx.PreciseDateFormatter.date(from: dateAsString)
         XCTAssertNotNil(dateFromString)
         XCTAssertEqual(date, dateFromString)
     }

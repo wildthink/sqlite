@@ -1,4 +1,4 @@
-import SQLite
+import SQLfx
 import XCTest
 
 final class SQLiteValueTests: XCTestCase {

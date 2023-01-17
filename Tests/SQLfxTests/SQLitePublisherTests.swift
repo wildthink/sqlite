@@ -1,7 +1,7 @@
 import Combine
 import CombineExtensions
 import CombineTestExtensions
-@testable import SQLite
+@testable import SQLfx
 import XCTest
 
 final class SQLitePublisherTests: XCTestCase {

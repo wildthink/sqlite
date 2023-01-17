@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import SQLite
+@testable import SQLfx
 
 final class FieldDecoderTests: XCTestCase {
 
@@ -22,7 +22,14 @@ final class FieldDecoderTests: XCTestCase {
         let decoder = FieldsDecoder()
         _ = try User(from: decoder)
         print(decoder.keys.map { $0.snakeCased })
-        print(decoder.schema)
+        print("Schema", decoder.schema)
+    }
+
+    func testFieldDecoderII() throws {
+        let decoder = FieldsDecoder()
+        _ = try UserSmall(from: decoder)
+        print(decoder.keys.map { $0.snakeCased })
+        print("Schema", decoder.schema)
     }
 
 //    func testPerformanceExample() throws {
@@ -50,6 +57,12 @@ struct User: Codable {
     var githubId: Int
     var keys: [String]
     var pt: CGPoint
+}
+
+struct UserSmall: Codable {
+    var name: String
+    var createdAt: Date
+    var keys: [String]
 }
 
 //extension User {
